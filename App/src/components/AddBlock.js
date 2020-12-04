@@ -12,11 +12,13 @@ class AddBlock extends React.Component {
     state = { Data: null }
 
     sendRequest = async () => {
-        const response = await Handler.get(  
+        Handler.get(  
           'addBlock', {
           params: {mined: false, data: this.state.Data},
-          });
-    
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
       }
 
     onBlockAdd = (event) => {

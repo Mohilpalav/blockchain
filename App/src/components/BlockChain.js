@@ -13,16 +13,20 @@ class BlockChain extends React.Component {
     this.getBlockChain();
   }
 
-  getBlockChain = async () => {
-    const response = await Handler.get(
-        'getBlockchain'
-    );
-    
-    this.setState({BlockChain: response.data});
+  getBlockChain = async () => { 
+    try {
+      const response = await Handler.get(
+          'getBlockchain'
+      );
+      this.setState({BlockChain: response.data});
+      } catch (error) {
+        console.error(error);
+      }
   }
 
   onSetDifficulty = (value) => {
     this.setState({Difficulty: value});
+    this.getBlockChain();
   }
 
   render(){

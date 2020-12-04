@@ -16,7 +16,7 @@ class Block extends React.Component {
 
     setColor(value) {
         
-        if (value === 'true'){ 
+        if (value){ 
             return  'success'
         } else {  
             return  'danger'
@@ -28,6 +28,10 @@ class Block extends React.Component {
           'changeData', {
           params: {index: this.props.index, data: this.state.blockData},
         });
+        if(response.status !== 200){
+            console.log("error!")
+        }
+        this.props.getBlockChain();
     }
 
     sendMineRequest = async () => {
@@ -35,19 +39,20 @@ class Block extends React.Component {
           'mine', {
           params: {index: this.props.index},
         });
+        if(response.status !== 200){
+            console.log("error!")
+        }
+        this.props.getBlockChain();
     }
 
     onChange = (event) => {
         event.preventDefault();
-        this.setState({ blockData: event.target.value });
-        this.sendChangeRequest();
-        this.props.getBlockChain();
+        this.sendChangeRequest();   
     }
 
     onSubmit = (event) => {
         event.preventDefault();
         this.sendMineRequest();
-        this.props.getBlockChain();
     }
 
     render() {

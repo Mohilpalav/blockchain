@@ -8,7 +8,7 @@ class Footer extends React.Component {
       <div className="Footer">
         <Navbar sticky="bottom" bg="dark" variant="dark">
           <Navbar.Text className="mx-auto">
-              Developed by Mohil Palav, Mark Ivan and Aditya Chaudhari.
+              Developed by Mohil Palav, Marc Ivan and Aditya Chaudhari.
           </Navbar.Text>
         </Navbar>
       </div>
