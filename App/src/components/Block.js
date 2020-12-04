@@ -23,10 +23,10 @@ class Block extends React.Component {
         }
     }
 
-    sendChangeRequest = async () => {
+    sendChangeRequest = async (index,data) => {
         const response = await Handler.get(  
           'changeData', {
-          params: {index: this.props.index, data: this.state.blockData},
+          params: {index: index, data: data},
         });
         if(response.status !== 200){
             console.log("error!")
@@ -46,8 +46,10 @@ class Block extends React.Component {
     }
 
     onChange = (event) => {
-        event.preventDefault();
-        this.sendChangeRequest();   
+        this.setState({blockData: event.target.value});
+        setTimeout(() => {
+            this.sendChangeRequest(this.props.index, event.target.value);  
+          }, 3000);
     }
 
     onSubmit = (event) => {
@@ -93,6 +95,7 @@ class Block extends React.Component {
                         <Col>
                             <Form.Control as ="textarea" value={this.state.blockData} onChange={this.onChange} rows={3} size="sm" />
                         </Col>
+                        
                     </Form.Group>
 
                     <Form.Group as ={Row} controlId="blockNonce">            
