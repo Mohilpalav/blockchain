@@ -1,6 +1,8 @@
 import React from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Navbar from 'react-bootstrap/Navbar'
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+
 import logo from './img/logo.png';
 
 class Header extends React.Component {
@@ -9,7 +11,7 @@ class Header extends React.Component {
     return (
       <div className="Header">
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="./App">
             <img
               alt=""
               src={logo}
@@ -20,12 +22,14 @@ class Header extends React.Component {
             BlockChain Demo
           </Navbar.Brand>
         </Navbar>
-
-        <Jumbotron>
-          <h1>Welcome!</h1>
-          <p>
-            This project simulates the behaviour of a BlockChain.
-          </p>
+        
+        <Jumbotron fluid>
+          <Container>
+          <h1>SE-575 BlockChain Demo.</h1>
+            <p>
+              This project simulates the behaviour of a BlockChain. To start, please select the difficulty.
+            </p>
+          </Container>
         </Jumbotron>
       </div>
     );

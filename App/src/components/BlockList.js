@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Block from './Block';
 
 class BlockList extends React.Component {
@@ -10,7 +11,7 @@ class BlockList extends React.Component {
     render() {
         
         const Blocks = () => this.props.blocks.map((block, index) => {
-            return <div key={index} className="col-sm-4"><Block index={index} getBlockChain={this.getBlockChain} block={block}/></div>
+            return <div key={index} className="col-sm-4 p-4"><Block index={index} getBlockChain={this.getBlockChain} block={block}/></div>
         });
 
     return <Blocks />

@@ -1,5 +1,7 @@
 import React from 'react';
-import Alert from 'react-bootstrap/Alert'
+import Alert from 'react-bootstrap/Alert';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 import BlockList from './BlockList';
 import SetDifficulty from './SetDifficulty';
@@ -40,27 +42,35 @@ class BlockChain extends React.Component {
           </div>
         );
       } else {
-        return <p> Add a block to dsiplay.</p>
+        return (<Alert variant="success">
+        <Alert.Heading>No Blocks to display!</Alert.Heading>
+        <p>
+         Add a block to the blockchain.
+        </p>
+        </Alert>
+      );
       }
     }
 
     if(this.state.Difficulty === -1) {
-      return <SetDifficulty onSetDifficulty={this.onSetDifficulty} />
+      return <div className="p-4"><SetDifficulty onSetDifficulty={this.onSetDifficulty} /></div>
     }
     
     else{
 
       return (
         <div className="BlockChain">
-           <Alert  variant="info">
-             <Alert.Heading>
-               Difficulty Selected: {this.state.Difficulty}
-             </Alert.Heading>
-           </Alert>
-
+          <Card className="p-4" border="light">
+            <Card.Body>
+              <Card.Title>Current Difficulty set to {this.state.Difficulty}</Card.Title>
+              <Button variant="primary" href="./App">Reset</Button>
+            </Card.Body>
+          </Card>
+           
            <AddBlock getBlockChain={this.getBlockChain} />
+
+          <div className="p-4"><DisplayBlocks shouldDisplay={this.state.BlockChain}/></div>
           
-          <DisplayBlocks shouldDisplay={this.state.BlockChain}/>
    
          </div>
        );

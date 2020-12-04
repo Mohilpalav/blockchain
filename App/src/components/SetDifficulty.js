@@ -3,8 +3,8 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-import Handler from './api/Handler'
 
+import Handler from './api/Handler';
 
 class SetDifficulty extends React.Component {
 
