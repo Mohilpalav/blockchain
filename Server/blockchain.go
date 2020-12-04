@@ -10,20 +10,20 @@ import (
 
 type Block struct {
 	BlockID   string `json:"BlockID"`
-	Timestamp int64 `json:"Timestamp"`
+	Timestamp int64  `json:"Timestamp"`
 	Hash      string `json:"Hash"`
 	PrevHash  string `json:"PrevHash"`
 	Data      string `json:"Data"`
 	Nonce     uint32 `json:"Nonce"`
-	Mined     bool `json:"Mined"`
+	Mined     bool   `json:"Mined"`
 }
 
 type BlockChain struct {
-	Blocks     []*Block
+	Blocks []*Block
 }
 
 var (
-	maxDifficulty string = "000000000"
+	maxDifficulty string = "0000000000"
 	Difficulty    int
 )
 
