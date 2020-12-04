@@ -43,7 +43,7 @@ class SetDifficulty extends React.Component {
                       </Form.Label>
                     </Col> 
                     <Col>
-                      <Form.Control onChange={this.onChange} min="0" max="10" type="number" size="lg" />
+                      <Form.Control onChange={this.onChange} min="1" max="10" type="number" size="lg" />
                     </Col>
                     <Button variant="primary" type="submit">
                             Select
