@@ -86,8 +86,7 @@ func (block *Block) IsMined() bool {
 }
 
 func GenerateTime() int64 {
-	timeNow := time.Now()
-	timeUnix := timeNow.UnixNano()
+	timeUnix := time.Now().UnixNano()
 	return timeUnix
 }
 
