@@ -2,7 +2,7 @@
 FROM node:13.12.0-alpine
 
 # set working directory
-WORKDIR C:\Users\MI\Google Drive\FALL2020\SE575\blockchain\App
+WORKDIR YOUR/ABS/FILEPATH/HERE
 
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
