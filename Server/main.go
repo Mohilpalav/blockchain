@@ -36,7 +36,7 @@ func main() {
 		})
 	})
 
-	router.Run(":3043")
+	router.Run(":3040")
 }
 
 func getBlockchain(c *gin.Context) {
