@@ -1,6 +1,6 @@
 FROM golang:1.15
 
-WORKDIR C:\Users\MI\Google Drive\FALL2020\SE575\blockchain\Server
+WORKDIR YOUR/ABS/FILEPATH/HERE
 COPY . .
 
 RUN go get -d -v ./...
