@@ -11,20 +11,24 @@ class AddBlock extends React.Component {
 
     state = { Data: null }
 
+    componentDidMount(){
+        this.props.getBlockChain();
+    }
+    
     sendRequest = async () => {
         Handler.get(  
           'addBlock', {
-          params: {mined: false, data: this.state.Data},
+          params: {data: this.state.Data},
         })
         .catch(function (error) {
             console.log(error);
         });
+        this.props.getBlockChain();
       }
 
     onBlockAdd = (event) => {
         event.preventDefault();
         this.sendRequest();
-        this.props.getBlockChain();
     }
 
     onChange = (event) => {
@@ -44,7 +48,7 @@ class AddBlock extends React.Component {
                             </Form.Label>
                         </Col> 
                         <Col>
-                            <Form.Control onChange={this.onChange} as ="textarea" rows={3} size="lg" />
+                            <Form.Control value={this.state.Data} onChange={this.onChange} as ="textarea" rows={3} size="lg" />
                         </Col>
                         <Col>
                             <Button variant="primary" type="submit">
