@@ -30,11 +30,6 @@ func main() {
 	api.GET("/changeData", changeData)
 	api.GET("/mine", mine)
 	api.GET("/getBlockchain", getBlockchain)
-	api.GET("/cd", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"difficulty": Difficulty,
-		})
-	})
 
 	router.Run(":3040")
 }
@@ -57,11 +52,7 @@ func mine(c *gin.Context) {
 		return
 	}
 
-	if index != 0 {
-		chain.Blocks[index].CalculateHash(true, chain.Blocks[index-1].Mined)
-	} else {
-		chain.Blocks[index].CalculateHash(true, true)
-	}
+	chain.MineData(index)
 
 	jsonInfo, _ := json.Marshal(&chain)
 	c.String(http.StatusOK, string(jsonInfo))
@@ -89,21 +80,12 @@ func changeData(c *gin.Context) {
 func addBlock(c *gin.Context) {
 	q := c.Request.URL.Query()
 
-	mined, err1 := strconv.ParseBool(q["mined"][0])
 	data := q["data"][0]
-	if err1 != nil {
-		fmt.Printf("No data found!\n")
-		c.JSON(http.StatusOK, gin.H{
-			"status": "failure",
-			"reason": "no data parsed!",
-		})
-		return
-	}
 
 	if chain == nil {
-		chain = InitBlockChain(data, mined)
+		chain = InitBlockChain(data)
 	} else {
-		chain.AddBlock(data, mined, chain.Blocks[len(chain.Blocks)-1].IsMined())
+		chain.AddBlock(data, chain.Blocks[len(chain.Blocks)-1].IsMined())
 	}
 
 	//convert to json and send away

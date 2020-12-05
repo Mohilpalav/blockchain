@@ -27,29 +27,37 @@ var (
 	Difficulty    int
 )
 
-func InitBlockChain(data string, mined bool) *BlockChain {
-	return &BlockChain{[]*Block{CreateFirstBlock(data, mined)}}
+func InitBlockChain(data string) *BlockChain {
+	return &BlockChain{[]*Block{CreateFirstBlock(data)}}
 }
 
-func CreateFirstBlock(data string, mined bool) *Block {
-	return CreateBlock(data, "", mined, true)
+func CreateFirstBlock(data string) *Block {
+	return CreateBlock(data, "", true)
 }
 
-func (chain *BlockChain) AddBlock(data string, mined, previousMined bool) {
+func (chain *BlockChain) AddBlock(data string, previousMined bool) {
 	prevBlock := chain.Blocks[len(chain.Blocks)-1]
-	newBlock := CreateBlock(data, prevBlock.Hash, mined, previousMined)
+	newBlock := CreateBlock(data, prevBlock.Hash, previousMined)
 	chain.Blocks = append(chain.Blocks, newBlock)
 }
 
-func CreateBlock(data, prevhash string, mined, previousMined bool) *Block {
+func CreateBlock(data, prevhash string, previousMined bool) *Block {
 	block := &Block{BlockID: GenerateBlockID(), Timestamp: GenerateTime(), PrevHash: prevhash, Data: data}
-	block.CalculateHash(mined, previousMined)
+	block.CalculateHash(false, previousMined)
 	return block
 }
 
 func (chain *BlockChain) ChangeData(index int, data string) {
 	block := chain.Blocks[index]
 	block.Data = data
+	chain.ChainChangeData(index)
+}
+
+func (chain *BlockChain) MineData(index int) {
+	chain.ChainMineData(index)
+}
+
+func (chain *BlockChain) ChainChangeData(index int) {
 	for index < len(chain.Blocks) {
 		block := chain.Blocks[index]
 		if index == 0 {
@@ -57,9 +65,28 @@ func (chain *BlockChain) ChangeData(index int, data string) {
 		} else {
 			prevBlock := chain.Blocks[index-1]
 			block.PrevHash = prevBlock.Hash
-			block.CalculateHash(false, false)
+			block.CalculateHash(prevBlock.Mined, false)
 		}
 		index++
+	}
+}
+
+func (chain *BlockChain) ChainMineData(index int) {
+	counter := index
+	for counter < len(chain.Blocks) {
+		block := chain.Blocks[counter]
+		if counter == 0 {
+			block.CalculateHash(true, true)
+		} else {
+			prevBlock := chain.Blocks[counter-1]
+			block.PrevHash = prevBlock.Hash
+			if counter == index {
+				block.CalculateHash(prevBlock.Mined, true)
+			} else {
+				block.CalculateHash(prevBlock.Mined, false)
+			}
+		}
+		counter++
 	}
 }
 
