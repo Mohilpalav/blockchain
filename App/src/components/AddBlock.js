@@ -48,7 +48,7 @@ class AddBlock extends React.Component {
                             </Form.Label>
                         </Col> 
                         <Col>
-                            <Form.Control value={this.state.Data} onChange={this.onChange} as ="textarea" rows={3} size="lg" />
+                            <Form.Control onChange={this.onChange} as ="textarea" rows={3} size="lg" />
                         </Col>
                         <Col>
                             <Button variant="primary" type="submit">
