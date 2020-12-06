@@ -19,7 +19,9 @@ class AddBlock extends React.Component {
         .catch(function (error) {
             console.log(error);
         });
-        this.props.getBlockChain();
+        setTimeout(() => {
+            this.props.getBlockChain();  
+          }, 500);
       }
 
     onBlockAdd = (event) => {
