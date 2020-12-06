@@ -10,10 +10,6 @@ import Handler from './api/Handler'
 class AddBlock extends React.Component {
 
     state = { Data: null }
-
-    componentDidMount(){
-        this.props.getBlockChain();
-    }
     
     sendRequest = async () => {
         Handler.get(  
