@@ -2,7 +2,7 @@
 FROM node:13.12.0-alpine
 
 # set working directory
-WORKDIR YOUR/ABS/FILEPATH/HERE
+WORKDIR directory-to-change
 
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH

@@ -1,6 +1,6 @@
 FROM golang:1.15
 
-WORKDIR YOUR/ABS/FILEPATH/HERE
+WORKDIR directory-to-change
 COPY . .
 
 RUN go get -d -v ./...
