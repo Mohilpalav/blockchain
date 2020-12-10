@@ -24,25 +24,31 @@ class Block extends React.Component {
     }
 
     sendChangeRequest = async (index,data) => {
-        const response = await Handler.get(  
-          'changeData', {
-          params: {index: index, data: data},
-        });
-        if(response.status !== 200){
-            console.log("error!")
+        Handler.get(  
+            'changeData', {
+            params: {index: index, data: data},
+        })
+        .then(() => {
+            this.props.getBlockChain();
+        }, (error) => {
+        if (error) {
+            console.log(error);
         }
-        this.props.getBlockChain();
+        });
     }
 
     sendMineRequest = async () => {
-        const response = await Handler.get(  
-          'mine', {
-          params: {index: this.props.index},
-        });
-        if(response.status !== 200){
-            console.log("error!")
+        Handler.get(  
+            'mine', {
+            params: {index: this.props.index},
+        })
+        .then(() => {
+            this.props.getBlockChain();
+        }, (error) => {
+        if (error) {
+            console.log(error);
         }
-        this.props.getBlockChain();
+        });
     }
 
     onChange = (event) => {

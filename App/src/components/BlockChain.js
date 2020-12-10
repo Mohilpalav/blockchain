@@ -16,14 +16,16 @@ class BlockChain extends React.Component {
   }
 
   getBlockChain = async () => { 
-    try {
-      const response = await Handler.get(
-          'getBlockchain'
-      );
+    Handler.get(
+      'getBlockchain'
+    )
+    .then((response) => {
       this.setState({BlockChain: response.data});
-      } catch (error) {
-        console.error(error);
-      }
+    }, (error) => {
+    if (error) {
+        console.log(error);
+    }
+    });
   }
 
   onSetDifficulty = (value) => {

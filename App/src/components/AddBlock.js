@@ -13,15 +13,16 @@ class AddBlock extends React.Component {
     
     sendRequest = async () => {
         Handler.get(  
-          'addBlock', {
-          params: {data: this.state.Data},
+            'addBlock', {
+            params: {data: this.state.Data},
         })
-        .catch(function (error) {
+        .then(() => {
+            this.props.getBlockChain();
+        }, (error) => {
+        if (error) {
             console.log(error);
+        }
         });
-        setTimeout(() => {
-            this.props.getBlockChain();  
-          }, 500);
       }
 
     onBlockAdd = (event) => {

@@ -12,13 +12,16 @@ class SetDifficulty extends React.Component {
 
   sendRequest = async (Difficulty) => {
     Handler.get(  
-    'setDifficulty', {
-    params: {difficulty: Difficulty},
+      'setDifficulty', {
+        params: {difficulty: Difficulty},
     })
-    .catch(function (error) {
-      console.log(error);
+    .then(() => {
+        
+    }, (error) => {
+    if (error) {
+        console.log(error);
+    }
     });
-
   }
 
   onSetDifficulty = (event) => {
