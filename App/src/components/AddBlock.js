@@ -9,7 +9,7 @@ import Handler from './api/Handler'
 
 class AddBlock extends React.Component {
 
-    state = { Data: null }
+    state = { Data: '' }
     
     sendRequest = async () => {
         Handler.get(  
@@ -39,7 +39,7 @@ class AddBlock extends React.Component {
         <div className="AddBlock">
             <Card border="light">
             <Card.Body>
-            <Form onSubmit= {this.onBlockAdd} style={{ width: '40rem' }}>
+            <Form onSubmit= {this.onBlockAdd}>
             <Form.Group as ={Row} controlId="addBlock">    
                         <Col>
                             <Form.Label size="lg" column >

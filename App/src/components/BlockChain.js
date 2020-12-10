@@ -44,7 +44,8 @@ class BlockChain extends React.Component {
           </div>
         );
       } else {
-        return (<Alert variant="success">
+        return (
+        <Alert variant="success">
         <Alert.Heading>No Blocks to display!</Alert.Heading>
         <p>
          Add a block to the blockchain.
@@ -61,7 +62,7 @@ class BlockChain extends React.Component {
     else{
 
       return (
-        <div className="BlockChain">
+        <div className="BlockChain" style={{paddingBottom: "10%"}}>
           <Card className="p-4" border="light">
             <Card.Body>
               <Card.Title>Current Difficulty set to {this.state.Difficulty}</Card.Title>
@@ -69,7 +70,7 @@ class BlockChain extends React.Component {
             </Card.Body>
           </Card>
            
-           <AddBlock getBlockChain={this.getBlockChain} />
+          <AddBlock getBlockChain={this.getBlockChain} />
 
           <div className="p-4"><DisplayBlocks shouldDisplay={this.state.BlockChain}/></div>
           

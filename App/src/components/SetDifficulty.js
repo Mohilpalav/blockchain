@@ -37,8 +37,8 @@ class SetDifficulty extends React.Component {
   render(){
     return (
   
-      <div className="SetDifficulty" style={{ height: '390px'}}> 
-        <Form onSubmit={this.onSetDifficulty} style={{ width: '25rem' }}>
+      <div className="SetDifficulty"> 
+        <Form onSubmit={this.onSetDifficulty}>
                 <Form.Group as ={Row} controlId="selectDifficulty">    
                     <Col>
                       <Form.Label size="lg" column >
