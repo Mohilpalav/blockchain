@@ -72,22 +72,25 @@ func (chain *BlockChain) ChainChangeData(index int) {
 }
 
 func (chain *BlockChain) ChainMineData(index int) {
-	counter := index
-	for counter < len(chain.Blocks) {
-		block := chain.Blocks[counter]
-		if counter == 0 {
-			block.CalculateHash(true, true)
-		} else {
-			prevBlock := chain.Blocks[counter-1]
-			block.PrevHash = prevBlock.Hash
-			if counter == index {
-				block.CalculateHash(prevBlock.Mined, true)
+	if chain.Blocks[index].Mined == false {
+		counter := index
+		for counter < len(chain.Blocks) {
+			block := chain.Blocks[counter]
+			if counter == 0 {
+				block.CalculateHash(true, true)
 			} else {
-				block.CalculateHash(prevBlock.Mined, false)
+				prevBlock := chain.Blocks[counter-1]
+				block.PrevHash = prevBlock.Hash
+				if counter == index {
+					block.CalculateHash(prevBlock.Mined, true)
+				} else {
+					block.CalculateHash(prevBlock.Mined, false)
+				}
 			}
+			counter++
 		}
-		counter++
 	}
+
 }
 
 func (block *Block) CalculateHash(mined, previousMined bool) {
