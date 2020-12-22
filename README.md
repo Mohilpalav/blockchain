@@ -1,10 +1,9 @@
 # Blockchain
 BlockChain demo application using React js and Go lang.
 
-## Prequisite
-The only prerequisite is to have Docker installed on your machine
+View Demo: https://se575-blockchain-demo.herokuapp.com/
 
-## Installation and Running
-Our Application can be installed and run by simply running the ./run.sh command.
-This will build the Docker images and run them.
-Finally, visit http://localhost:3000/ to try out the application!
+## Run using docker
+
+1. Run run.sh (This will build the Docker images and run them.)
+2. Visit http://localhost:3000/ to try out the application.
