@@ -3,7 +3,7 @@
 ***This application was developed as a project under the SE-575 (Software Design) course at Drexel University.***
 
 A Blockchain demo application demonstrating the proof-of-work algorithm using React Js and Go lang.
-[Demo]{https://se575-blockchain-demo.herokuapp.com/}
+[Demo](https://se575-blockchain-demo.herokuapp.com/)
 
 ## Run using docker
 
