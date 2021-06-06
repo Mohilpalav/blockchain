@@ -1,6 +1,6 @@
 # Blockchain
 
-***This application was developed as a project under SE-575 (Software Design) course at Drexel University.***
+***This application was developed as a project under the SE-575 (Software Design) course at Drexel University.***
 
 BlockChain demo application using React js and Go lang.
 
